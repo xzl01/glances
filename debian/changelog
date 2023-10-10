@@ -1,5 +1,580 @@
-template-repository (1.0-1) unstable; urgency=medium
+glances (3.4.0.3-0deepin1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release.
+  * Add support of web
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- xiangzelong <xiangzelong@deepin.org>  Tue, 10 Oct 2023 17:21:45 +0800
+
+glances (3.3.1.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Add python3-ujson in B-D.
+    + Use sysvinit-utils (>= 3.05-4~) instead lsb-base depend.
+    + Bump to Standards-Version 4.6.2
+  * debian/copyright
+    + Extend copyright debian holders years.
+  * debian/patches
+    + Refresh 002_no_put_links_in_doc.patch
+    + Refresh 003_not_install_static_dir.patch
+    + Refresh 007_disable_ip_module_by_default.diff
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sat, 21 Jan 2023 16:45:28 -0500
+
+glances (3.3.0.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Bump to Standards-Version 4.6.1.0 (no changes needed).
+  * debian/patches
+    + Refresh 004_disable-pypi.patch.
+    + Refresh 007_disable_ip_module_by_default.diff
+  * debian/copyright
+    + Extend copyright debian holders years.
+    + Update my lastname and my email.
+  * debian/rules
+    + Remove ESLint config file.
+    + Remove .gitignore file.
+  * Update debian/NEWS file.
+  * Remove glances.lintian-overrides files.
+    + the warning no longer exists.
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sat, 22 Oct 2022 22:57:16 -0500
+
+glances (3.2.5+dfsg-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * No source change upload to rebuild with debhelper 13.10.
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 15 Oct 2022 12:07:34 +0200
+
+glances (3.2.5+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches
+    + Refresh 004_disable-pypi.patch patch.
+    + Refresh 006_indicate_user_webserver_static_files_not_included.patch
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sat, 16 Apr 2022 18:39:34 -0500
+
+glances (3.2.4.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Update Homepage field.
+    + Remove hddtemp from Recommends field. (Closes: #1001940)
+  * debian/rules
+    + Some commented lines are deleted.
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sun, 19 Dec 2021 11:48:54 -0500
+
+glances (3.2.3.1+dfsg-1) unstable; urgency=medium
+
+  [Alexis Murzeau]
+  * Remove Exclude prebuilt javascript files. (Closes: #990340)
+    + Please see this MR for the full changes.
+      + https://salsa.debian.org/debian/glances/-/merge_requests/2
+        + Thanks to Alexis for the work!
+
+  [Daniel Echeverri]
+  * New upstream release.
+  * debian/control
+    + Add python3-defusedxml and python3-sphinx-rtd-theme in B-D.
+    + Bump to Standards-Version 4.6.0.1 (no changes needed).
+  * debian/patches
+    + Add 007_disable_ip_module_by_default.diff patch.
+      + Disable ip module by default. (Closes: #850258)
+    + Remove 001_reproducible-build.patch.
+      + Merge with upstream
+    + Remove 005_fix-typo.patch.
+      + Merge with upstream
+    + Refresh 004_disable-pypi.patch.
+  * Add entry in README.debian file.
+  * Remove lintian overrides.
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sun, 07 Nov 2021 19:35:20 -0500
+
+glances (3.1.5-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Update debhelper-compat 13.
+    + Update my lastname.
+    + Remove node-normalize.css in Depends field.
+    + Add libjs-sphinxdoc, node-html5shiv in Depends field.
+  * debian/glances.links
+    + Remove some links because aren't necessary.
+  * debian/glances-doc.links
+    + Add new symlinks to use Debian  JavaScript libraries.
+  * debian/rules
+    + Don't install embedded copy of JavaScript libraries.
+  * debian/patches
+    + Refresh debian/patches/005_fix-typo.patch.
+    + Forwarded 001_reproducible-build.patch to upstream.
+    + Other patches forwarded not-needed.
+  * Add debian/glances.lintian-overrides file.
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sun, 04 Oct 2020 22:42:34 -0500
+
+glances (3.1.4.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Bump to Standards-Version 4.5.0 (no changes needed).
+  * debian/patches
+    + Remove 006_fix_broken_method_call.patch
+    + Remove 007_fix_SyntaxWarning.patch.
+      + Merge with upstream.
+  * debian/upstream/metadata
+    + Add Bug-Database and Bug-Submit fields.
+
+ -- Daniel Echeverry <epsilon@debian.org>  Wed, 25 Mar 2020 20:19:44 -0500
+
+glances (3.1.3-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #939073).
+  * debian/control
+    + Add ${sphinxdoc:Depends} in Depends.
+    + Bump to Standards-Version 4.4.1 (no changes needed).
+    + Mark Rules-Requires-Root: no as we don't need root for building.
+  * debian/patches
+    + Add 006_fix_broken_method_call.patch.
+    + Add 007_fix_SyntaxWarning.patch.
+    + Refresh 004_disable-pypi.patch.
+    + Refresh 005_fix-typo.patch.
+  * Now glances server listen in 127.0.0.1 (Closes: #942162).
+    + Read README.Debian file for more info.
+  * Update lintian-overrides file.
+
+ -- Daniel Echeverry <epsilon@debian.org>  Fri, 17 Jan 2020 22:14:31 -0500
+
+glances (3.1.1-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #932741)
+  * debian/control
+    + Update DH 12 in B-D.
+    + Bump to Standards-Version 4.4.0 (no changes needed)
+    + Add python3-pynvml in Suggests field. (Closes: #927116)
+    + Add Pre-Depends field.
+  * debian/patches
+    + Refresh 005_fix-typo.patch patch.
+  * Use debhelper-compat instead of debian/compat.
+  * debian/rules
+    + Remove dh_installchangelog because isn't necessary.
+    + Add dh_missing override to delete doctree dir.
+    + Remove egg-info files in dh_auto_clean override.
+  * Remove some unused lintian overrides.
+
+ -- Daniel Echeverry <epsilon@debian.org>  Mon, 19 Aug 2019 12:15:00 -0500
+
+glances (3.1.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Change my email address.
+    + Bump to Standards-Version 4.3.0 (no changes needed)
+  * debian/patches
+    + Refresh 004_disable-pypi.patch patch.
+    + Refresh 005_fix-typo.patch patch.
+
+ -- Daniel Echeverry <epsilon@debian.org>  Sun, 10 Feb 2019 11:47:50 -0500
+
+glances (3.0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches
+    + Refresh 004_disable-pypi.patch patch.
+  * debian/copyright
+    + Refresh copyright file.
+  * Update lintian-overrides file.
+  * debian/rules
+    + Avoid to install image to Python library path.
+  * debian/glances.install
+    + Install image in data Path instead lib path.
+  * debian/glances.links
+    + Symlink image from data path to lib path.
+
+  [ Sebastien Badia ]
+  * debian/copyright
+    + Remove un-used paragraph.
+  * debian/patches
+    + Refresh according new upstream version.
+    + docs: manpage - Fix spelling typo
+  * debian/control
+    + Bump to Standards-Version 4.2.1 (no changes needed)
+
+  [Ondřej Nový]
+  * Use 'python3 -m sphinx' instead of sphinx-build for building docs.
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Sat, 20 Oct 2018 19:54:51 -0500
+
+glances (2.11.1-6) unstable; urgency=medium
+
+  * d/systemd: Fix systemd man documentation (Closes: #902910)
+  * d/control:
+    + Bump to Standards-Version 4.1.5 (no changes needed)
+    + Wrap and sort control file
+  * d/rules: Use already packaged font packages, remove embedded copies
+
+ -- Sebastien Badia <sbadia@debian.org>  Sat, 28 Jul 2018 13:17:45 +0200
+
+glances (2.11.1-5) unstable; urgency=medium
+
+  [ Sebastien Badia ]
+  *  Fix removal of /etc/default/glances (SysV)(Closes: #901878)
+
+  [ Daniel Echeverry ]
+  * Fix systemd service wrong URL. (Closes: #901908)
+    + Thanks to Ulises Vitulli for the patch.
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Mon, 25 Jun 2018 21:08:09 -0500
+
+glances (2.11.1-4) unstable; urgency=medium
+
+  [ Daniel Echeverry ]
+  * debian/control
+    + Add node-normalize.css in Depends field.
+    + Add dh-python in B-D.
+    + Change debhelper to 11 in B-D.
+    + Bump Standards-Version to 4.1.4 (no changes).
+  * debian/glances.links
+    + Use normalize.css package instead to use embedded local copy.
+  * debian/rules
+    + Remove embedded local copy. (Closes: #898782)
+  * debian/compat
+    + Bump to debhelper 11.
+  * Add glances.service systemd service
+  * Remove glances.default file
+  * debian/glances.init.
+    Change script to remove use of $RUN variable and default file.
+
+  [ Sebastien Badia ]
+  * d/upstream: Added Upstream metadata
+  * d/control:
+    + Update compat version (allow this package to be backported to stretch)
+    + Remove X-Python3-Version field
+  * d/tests: Added a basic test suite (systemd + glances xml-rpc API)
+  * d/links:
+    + Use normalize.css package, and remove embedded copy
+    + Added underscore and jquery deps and remove embedded copy
+  * d/rules: Fix override_dh_sphinxdoc for 1.7.4
+
+ -- Sebastien Badia <sbadia@debian.org>  Tue, 19 Jun 2018 11:13:32 +0200
+
+glances (2.11.1-3) unstable; urgency=medium
+
+  [ Nicolas Braud-Santoni ]
+  * debian/copyright:
+    + Refer to the CC0 license file
+    + Use HTTPS URIs
+  * Bump Standards-Version to 4.1.3
+  * debian/control: Use canonical Vcs-* URLs
+  * Fixup debian/copyright
+
+  [ Sebastien Badia ]
+  * d/control: Migrate from alioth to salsa.d.o
+
+ -- Sebastien Badia <sbadia@debian.org>  Wed, 07 Feb 2018 00:27:01 +0100
+
+glances (2.11.1-2) unstable; urgency=medium
+
+  * d/control
+    + Bump to Standards-Version 4.1.2 (no changes needed)
+    + Clean un-needed build-deps (and fixes upstream issue
+      https://github.com/nicolargo/glances/issues/1198 )
+
+ -- Sebastien Badia <sbadia@debian.org>  Tue, 12 Dec 2017 18:25:45 +0100
+
+glances (2.11.1-1) unstable; urgency=medium
+
+  * New upstream version 2.11.1
+  * d/control:
+    + Bump Standard-Version to 4.1.1 (no changes needed)
+    + Priority extra is now replaced by optional
+  * d/patches:
+    + Re-order Debian patches
+    + Disable nagging suggestion to upgrade using pip (Closes: #877127)
+
+ -- Sebastien Badia <sbadia@debian.org>  Sat, 14 Oct 2017 18:56:16 +0200
+
+glances (2.11-1) unstable; urgency=medium
+
+  * New upstream version 2.11
+
+ -- Sebastien Badia <sbadia@debian.org>  Sun, 27 Aug 2017 16:42:07 +0200
+
+glances (2.10-2) unstable; urgency=medium
+
+  * debian/glances.links
+    + Fix broken symlinks (Closes: #872227)
+  * debian/control
+    + Bump Standard-Version to 4.1.0 (no changes needed)
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Wed, 23 Aug 2017 13:38:31 -0500
+
+glances (2.10-1) unstable; urgency=medium
+
+  [Daniel Echeverry]
+  * New upstream release.
+  * debian/patches
+    + Remove use_js_included_in_debian.diff patch,
+      upstream is not using it anymore
+  * source/lintian-overrides
+    + Add more files to lintian-overrides file,
+      they are false positives.
+    + The vendor.min.js isn't installed, is replaced
+      with the repo javascript libraries
+  * debian/rules
+    + Remove embebbed javascript copies.
+    + Remove images file because is installed in wrong path
+  * debian/copyright
+    + Extend copyright holders years
+    + Update file field to correct name
+  * debian/glances.install
+    + Install images file in correct path
+  * debian/glances.links
+    + Remove links because they aren't necessary
+    + Update angular.js link
+    + Add links for the images in the correct path
+  * Add glances.postrm script (Closes: #858336)
+
+  [ Sebastien Badia ]
+  * Refresh Debian patches according new upstream version
+  * d/control:
+    + Add a Suggests dependencies on doc package
+    + Bump Standard-Version to 4.0.0 (no changes needed)
+
+ -- Sebastien Badia <sbadia@debian.org>  Thu, 13 Jul 2017 18:25:06 +0200
+
+glances (2.7.1.1-2) unstable; urgency=medium
+
+  * Validate if the service is enabled in initscript
+    to avoid upgrade error. (Closes: #848046)
+    + Thanks to Ingo Saitz for the patch!
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Tue, 03 Jan 2017 20:36:39 -0500
+
+glances (2.7.1.1-1) unstable; urgency=medium
+
+  [ Daniel Echeverry ]
+  * New upstream version 2.7.1_1 (Closes: #842520)
+  * Add source/lintian-overrides
+    + False positive, the js file exists and it is included, this is not
+      a minified JS but just one that contains long lines of HTML.
+  * debian/patches
+    + Refresh all patches.
+    + Add use_js_included_in_debian.diff patch.
+      + Fix index.html to use repo libraries instead embedded ones.
+  * Update d/watch file.
+  * debian/copyright
+    + Add missing copyright holder.
+    + Extend copyright holders years
+  * debian/control
+    + Set correctly lsb-base depends.
+  * debian/glances.links
+    + Update symbol links.
+  * debian/rules
+    + Remove embedded code copies
+
+  [ Sebastien Badia ]
+  * d/control
+    + Update dependencies according new upstream release
+    + Migrate uploader mail to my Debian email
+  * d/compat: Bump to debhelper 10
+  * d/install: Fix python-module-in-wrong-location lintian warning
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Fri, 09 Dec 2016 15:57:26 +0100
+
+glances (2.6.2-2) unstable; urgency=medium
+
+  * debian/control
+    + Add Breaks and Replaces field. (Closes: #826685)
+  * debian/patches
+    + Add reproducible-build.patch.
+      + Make the build reproducible. (Closes: #827987)
+        + Thanks to Chris Lamb for the patch!
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Tue, 07 Jun 2016 18:34:28 -0500
+
+glances (2.6.2-1) unstable; urgency=medium
+
+  [ Sebastien Badia ]
+  * d/rules: Update comments according Tanguy review (thx!)
+  * d/control: Bump Standards version to 3.9.8 (no changes)
+  * d/copyright:
+      Fix path (vendor/vendors)
+      Rename expat to Expat for machine-readable things
+  * Imported Upstream version 2.6.2
+
+  [ Daniel Echeverry ]
+  * Add expat license
+
+ -- Sebastien Badia <seb@sebian.fr>  Fri, 20 May 2016 15:48:43 +0200
+
+glances (2.6.1-1) unstable; urgency=medium
+
+  [Sebastien Badia]
+  * New upstream release
+  * Update d/watch to version 4
+  * d/control:
+      Wrap-and-sort control file
+      Bump Standards-Version to 3.9.7
+  * d/links:
+      Use Debian version of angularjs (fix lintian issue with gravatar)
+  * d/patches: Remove 000_remove-minified-js.patch (merged upstream)
+
+  [ Daniel Echeverry ]
+  * Update doc-base to new doc package glances-doc
+  * Update glances.manpages
+  * debian/control
+    + Add glances-doc package
+    + Add python-sphinx in B-D
+    + Change to python-psutil in B-D
+  * debian/rules
+    + Use sphinxdoc to build doc
+  * debian/copyright
+    + Add expat license
+  * debian/patches
+    + Add no_put_links_in_doc.diff
+      + Remove external html resource to fix lintian warning
+    + Add not_install_static_dir.patch
+      + Not install static dir because install duplicate files
+
+ -- Sebastien Badia <seb@sebian.fr>  Tue, 29 Mar 2016 01:35:51 +0200
+
+glances (2.5.1-1) unstable; urgency=medium
+
+  [ Daniel Echeverry ]
+  * New maintainer. (Closes: #791432)
+  * New upstream release. (Closes: #807052)
+  * debian/control
+    + Set myself as Maintainer
+  * Rename install file to glances.install
+  * Rename examples file to glances.examples
+  * Rename manpages file to glances.manpages
+  * debian/copyright
+    + Remove i18n/de/LC_MESSAGES/glances.po
+    + Remove glances/outputs/static/js/modernizr.custom.js
+      + Because doesn't exist
+  * Remove debian/missing-sources directory
+
+  [ Sebastien Badia ]
+  * debian/control
+    + Update Vcs-* field (use collab-maint namespace)
+    + Wrap and sort control file
+    + Add myself to uploaders
+  * d/copyright: Add Daniel and me to the copyright file
+  * lintian
+    + remove minified javascript files from source tarball
+    + link angularjs and lodash to respective packages
+
+ -- Sebastien Badia <seb@sebian.fr>  Fri, 05 Feb 2016 13:44:21 +0100
+
+glances (2.3-1) unstable; urgency=medium
+
+  * New upstream release 2.3.
+  * Description change
+  * Update recommended packages
+
+ -- Rémi Verchère <rverchere@gmail.com>  Sat, 07 Feb 2015 21:54:45 +0100
+
+glances (2.2-1) unstable; urgency=medium
+
+  * New upstream release 2.2.
+  * Closes: #772113
+
+ -- Rémi Verchère <rverchere@gmail.com>  Sat, 20 Dec 2014 22:28:48 +0100
+
+glances (2.1.1-1) unstable; urgency=medium
+
+  * New upstream release 2.1.1
+  * Bumped Standards-Version to 3.9.6
+
+ -- Rémi Verchère <rverchere@gmail.com>  Fri, 03 Oct 2014 21:03:41 +0200
+
+glances (2.1-1) unstable; urgency=medium
+
+  * New upstream release 2.1
+  * Fixed lintian error regarding javascript sources
+
+ -- Rémi Verchère <rverchere@gmail.com>  Sun, 28 Sep 2014 14:37:25 +0200
+
+glances (2.0.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Add recommend on pysnmp, hddtemp, lm-sensors, bottle
+  * Depends on python-psutil >= 2.0.0
+  * Fixed lintian error regarding javascript sources
+  * Adopt package. (Closes: #752175)
+
+ -- Rémi Verchère <rverchere@gmail.com>  Wed, 02 Jul 2014 22:06:10 +0200
+
+glances (1.7.6-1) unstable; urgency=medium
+
+  * Depends on python-psutil >= 1.2.1
+  * Add missing dependency python3-pkg-resources (Closes: #742291)
+  * Imported Upstream version 1.7.6
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Wed, 26 Mar 2014 18:10:26 +0100
+
+glances (1.7.4-1) unstable; urgency=medium
+
+  * python3 conversion
+  * Fixed executable issue (LP: #1275579)
+  * Imported Upstream version 1.7.4
+  * Handle html doc with doc-base
+  * Update copyright
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Wed, 05 Feb 2014 20:05:51 +0100
+
+glances (1.7.3-2) unstable; urgency=medium
+
+  * Overriding test (closes: #733168)
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Sat, 28 Dec 2013 20:16:02 +0100
+
+glances (1.7.3-1) unstable; urgency=low
+
+  * Add init scrip to start Glances server
+  * Imported Upstream version 1.7.3 (closes: #729393)
+  * Depends on python-psutil >= 1.1.0
+  * Build depends on python-psutil
+  * Fixed files location with latest release
+  * dh-python conversion
+  * Bumped Standards-Version to 3.9.5.0 (no changes)
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Fri, 01 Nov 2013 16:01:03 +0100
+
+glances (1.6-1) unstable; urgency=low
+
+  * Imported Upstream version 1.6
+  * Removed useless install files
+  * Dropped patches included upstream
+  * New conf file in /etc/glances/glances.conf
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Sun, 27 Jan 2013 18:43:42 +0100
+
+glances (1.5.1-1) unstable; urgency=low
+
+  * Fixed watch file
+  * Imported Upstream version 1.5.1
+  * Drop override_dh_install, filename fixed upstream
+  * Cherry-picked patch to fix HMTL,CVS output
+  * Fixed default HTML template location
+    Use shell wrapper instead of symbolic link.
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Sun, 11 Nov 2012 12:05:38 +0100
+
+glances (1.4.2.1-1) unstable; urgency=low
+
+  * Imported Upstream version 1.4.2.1
+  * Removed man page patch (fixed upstream)
+  * Bumped Standards-Version to 3.9.4.0
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Sun, 23 Sep 2012 11:45:01 +0200
+
+glances (1.4.1.1-1) unstable; urgency=low
+
+  * Initial package (closes: #654888).
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Mon, 17 Sep 2012 17:27:25 +0200

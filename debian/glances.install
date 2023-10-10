@@ -1,0 +1,3 @@
+conf/glances.conf etc/glances/
+glances/outputs/static/images/glances.png /usr/share/glances/
+glances/outputs/static/public/ /usr/lib/python3/dist-packages/glances/outputs/static/

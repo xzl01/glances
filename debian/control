@@ -1,15 +1,65 @@
-Source: template-repository
-Section: unknown
+Source: glances
+Section: utils
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Daniel Echeverri <epsilon@debian.org>
+Uploaders: Sebastien Badia <sbadia@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-all,
+               python3-psutil,
+               python3-setuptools,
+               python3-sphinx,
+	       python3-defusedxml,
+	       python3-sphinx-rtd-theme,
+               python3-ujson
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/debian/glances
+Vcs-Git: https://salsa.debian.org/debian/glances.git
+Homepage: https://github.com/nicolargo/glances
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: glances
+Architecture: all
+Depends: adduser,
+         sysvinit-utils (>= 3.05-4~),
+         python3-pkg-resources,
+         ${misc:Depends},
+         ${python3:Depends}
+Recommends: lm-sensors,
+            python3-bottle,
+            python3-docker,
+            python3-influxdb,
+            python3-matplotlib,
+            python3-netifaces,
+            python3-pysnmp4,
+            python3-pystache
+Pre-Depends: ${misc:Pre-Depends}
+Suggests: glances-doc, python3-pynvml
+Description: Curses-based monitoring tool
+ Glances is a curses-based monitoring tool for GNU/Linux or BSD OS.
+ Glances uses the PsUtil library to get information from your system.
+ .
+ It monitors CPU, load, memory, network bandwidth, disk I/O, disk use, process.
+
+Package: glances-doc
+Architecture: all
+Section: doc
+Depends: fonts-font-awesome,
+         fonts-lato,
+         fonts-roboto-slab,
+         libjs-jquery,
+         libjs-underscore,
+	 libjs-sphinxdoc,
+         node-html5shiv,
+         ${misc:Depends},
+	 ${sphinxdoc:Depends}
+Suggests: glances
+Breaks: glances (<< 2.5.1-1)
+Replaces: glances (<< 2.5.1-1)
+Description: Documentation for glances Curses-based monitoring tool
+ This package provides all information about glances and how to use it
+ Glances is  a cross-platform curses-based monitoring tool which aims
+ to present a maximum of information in a minimum of space, ideally to
+ fit in a classical 80x24 terminal or higher to have additional information.
+ Also work in client/server mode. Remote monitoring could be done via terminal
+ or web interface

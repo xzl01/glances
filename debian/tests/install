@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -x
+
+systemctl status glances
+
+cat <<EOD > data
+<?xml version='1.0' encoding='UTF-8'?>
+<methodCall>
+  <methodName>getSystem</methodName>
+  <params>
+  </params>
+</methodCall>
+EOD
+
+curl -s -XPOST http://127.0.0.1:61209/RPC2 -H "Content-Type: text/xml" -d @data

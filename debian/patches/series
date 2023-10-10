@@ -1,0 +1,5 @@
+002_no_put_links_in_doc.patch
+003_not_install_static_dir.patch
+004_disable-pypi.patch
+006_indicate_user_webserver_static_files_not_included.patch
+007_disable_ip_module_by_default.diff

@@ -1,0 +1,15 @@
+Description: Remove scripts with external HTML resources to fix lintian warning
+Author: Daniel Echeverry <epsilon77@gmail.com>
+Forwarded: not-needed
+Last-Update: <2016-03-16>
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -168,7 +168,7 @@
+ # Custom sidebar templates, maps document names to template names.
+ html_sidebars = {
+     '**': [
+-        'about.html',
++#        'about.html',
+         'navigation.html',
+         'links.html',
+         'searchbox.html'

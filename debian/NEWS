@@ -1,0 +1,24 @@
+glances (3.3.0.1+dfsg-1) unstable; urgency=medium
+
+  For debian free software guidelines. is necessary remove some prebuilt js files
+  to comply  Debian policy. As a consequence, glances web ui isn't available
+  please see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=990340
+ 
+  On the other hand, for Security reasons, in versions >= 3.1.3-1 glances 
+  will binds to 127.0.0.1. If you want expose to the whole network, 
+  you must be modify systemd unit file or (sysv init script) for glances 
+  start with the correct bind address and set user and password
+  Please see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=942162
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sun, 23 Oct 2022 11:07:23 -0500
+
+glances (2.0.1-1) unstable; urgency=medium
+
+  HTML output was removed in glances 2.0 in favour of a dedicated web server.
+  To run the web server you'll need to install python-bottle (listed in recommends).
+  Run the web server calling glances with "-w" cli option, glances will listen on
+  available ipv4 address (default port 61208):
+  .
+  	http://0.0.0.0:61208/
+
+ -- Geoffroy Youri Berret <efrim@azylum.org>  Mon, 09 Jun 2014 13:46:52 +0200

@@ -1,0 +1,16 @@
+Description: disable ip module by default for privacy reasons.
+Author: Johannes Schauer Marin Rodrigues <josch@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=850258
+Forwarded: not-needed
+Last-Update: 2022-10-23
+--- a/conf/glances.conf
++++ b/conf/glances.conf
+@@ -176,7 +176,7 @@
+ #wlan0_tx_log=True
+ 
+ [ip]
+-disable=False
++disable=True
+ public_refresh_interval=300
+ public_ip_disabled=False
+ # Configuration for the Censys online service

@@ -1,0 +1,20 @@
+Description: Add info in --help that the webserver feature doesn't include static files
+Author: Alexis Murzeau <amubtdx@gmail.com>
+Bug-Debian: https://bugs.debian.org/990340
+Forwarded: not-needed
+Last-Update: 2023-07-07
+---
+ glances/main.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/glances/main.py
++++ b/glances/main.py
+@@ -356,7 +356,7 @@
+             action='store_true',
+             default=False,
+             dest='webserver',
+-            help='run Glances in web server mode (bottle needed)',
++            help='run Glances in web server mode (python3-bottle needed, static files not included)',
+         )
+         parser.add_argument(
+             '--cached-time',

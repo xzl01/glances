@@ -1,4 +1,54 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+export PYBUILD_NAME=glances
 
 %:
-	dh $@
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+
+# Split package and documentation
+override_dh_sphinxdoc:
+	python3 -m sphinx -b html -d debian/tmp/doctrees docs \
+		debian/glances-doc/usr/share/doc/glances/html
+	# Fonts
+	rm -rf $(CURDIR)/debian/glances-doc/usr/share/doc/glances/html/_static/fonts/Lato-*
+	rm -rf $(CURDIR)/debian/glances-doc/usr/share/doc/glances/html/_static/fonts/RobotoSlab-*
+	rm -rf $(CURDIR)/debian/glances-doc/usr/share/doc/glances/html/_static/fonts/fontawesome-*
+
+override_dh_missing:
+	rm -rf debian/tmp/doctrees
+	dh_missing --fail-missing
+
+# Split package and documentation
+override_dh_auto_install:
+	dh_auto_install --destdir $(CURDIR)/debian/glances
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/jquery.js
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/underscore.js
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/doctools.js
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/language_data.js
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/searchtools.js
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/js/html5shiv-printshiv.min.js
+	rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/html/_static/js/html5shiv.min.js
+	rm -f $(CURDIR)/debian/glances/usr/lib/python3/dist-packages/glances/outputs/static/public/images/glances.png
+	rm -f $(CURDIR)/debian/glances/usr/lib/python3/dist-packages/glances/outputs/static/images/glances.png
+	rm -f $(CURDIR)/debian/glances/usr/lib/python*/dist-packages/glances/outputs/static/README.md
+	rm -f $(CURDIR)/debian/glances/usr/lib/python*/dist-packages/glances/outputs/static/.eslintrc.js
+	rm -f $(CURDIR)/debian/glances/usr/lib/python*/dist-packages/glances/outputs/static/.gitignore
+
+# Overriding test to prevent FTBS (cf. #733168) http://bugs.debian.org/733168
+# disable tests as they require /etc/mtab and fail in chroots
+override_dh_auto_test:
+
+# Fix lintian warning (duplicates files Copying, News; and remove authors, glances.conf)
+override_dh_installdocs:
+	set -e && for docs in COPYING AUTHORS NEWS glances.conf; do \
+                rm -f $(CURDIR)/debian/glances/usr/share/doc/glances/$$docs ; \
+        done
+	dh_installdocs
+
+override_dh_auto_clean:
+	rm -rf ./Glances.egg-info
+	dh_auto_clean

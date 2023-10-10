@@ -1,0 +1,16 @@
+For Security reasons, in versions >= 3.1.3-1 glances will binds to 127.0.0.1, 
+it's related with this bug[1]. If you want expose to the whole network, 
+you must be modify systemd unit file or (sysv init script) for glances start with the correct 
+bind address and set user and password. I.E
+
+glances -s -B IP_ADDRESS --username --password
+
+Then, Glances asks users, password, and if you want save it in ~/.config/glances/.user.pwd (encoded) 
+
+[1]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=942162
+
+---------------------------------------------------------------------------------------
+
+For debian free software guidelines, is necessary remove some prebuilt js files, to comply
+Debian policy. As a consequence, glances web ui isn't available
+please see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=990340
